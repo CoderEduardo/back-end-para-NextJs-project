@@ -5,6 +5,9 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 const PORTA = 3000
+const connection = require("./model/database/connection")
+connection.authenticate().then(()=>console.log("Banco de dados conectado com sucesso!")).catch(erro=>{console.log(`Ocorreu um erro: ${erro}`)})
+const DataBase = require("./model/database/database")
 
 //Rotas
 const loginRouter = require("./routes/login")
